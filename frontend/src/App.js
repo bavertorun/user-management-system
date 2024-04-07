@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/home/Home';
+import AddEdit from './pages/addEdit/AddEdit';
 
 function App() {
     
@@ -10,6 +11,7 @@ return (
       <Header/>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/add" element={<AddEdit/>}/>
       </Routes>
     </Router>
   );
