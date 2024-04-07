@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Swal from "sweetalert2"
 
 export default function Home(){
@@ -72,8 +73,8 @@ export default function Home(){
                   <td>{user.contact}</td>
                   <td>
                     <div className="d-flex">
-                      <button className="btn btn-sm btn-outline-primary">View</button>
-                      <a href={`/update/${user._id}`}><button className="btn btn-sm btn-outline-success mx-2">Edit</button></a>
+                    <Link to={`/view/${user._id}`}><button className="btn btn-sm btn-outline-primary">View</button></Link>
+                      <Link to={`/update/${user._id}`}><button className="btn btn-sm btn-outline-success mx-2">Edit</button></Link>
                       <button onClick={()=>userDelete(user._id)} className="btn btn-sm btn-outline-danger">Delete</button>
                     </div>
                   </td>

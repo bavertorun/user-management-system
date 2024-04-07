@@ -65,7 +65,7 @@ export default function AddEdit() {
             showConfirmButton: false,
             timer: 1500
           });
-          // reload(1500);
+          reload(1500);
         }
       }
     };
