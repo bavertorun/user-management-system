@@ -1,2 +1,3 @@
-# user-management-system
-React &amp; NodeJS User Management System
+# React &amp; NodeJS User Management System
+
+## Note: The project coding is ongoing.
