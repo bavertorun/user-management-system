@@ -7,14 +7,15 @@ const userSchema = Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     country: {
         type: String,
         required: true
     },
     contact:{
-        type: Number,
+        type: String,
         required: true
     }
 },{timestamps: true})
