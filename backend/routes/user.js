@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const User = require('../models/user')
+const { User, validateUser } = require('../models/user')
 const router = Router()
 
 
@@ -17,7 +17,30 @@ router.get('/:id',async (req,res)=>{
     res.json(user)
 
 })
+router.post('/create', async (req,res)=>{
 
+    const { error } = validateUser(req.body);
+
+    if(error){
+        res.status(400).json({status: 400, error: error.details[0].message});
+    }
+    
+    const newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        country: req.body.country,
+        contact: req.body.contact
+    })
+    
+    try {
+        await newUser.save()
+        res.json(newUser)
+    } catch (error) {
+        res.status(500).json({status: 500,error: 'Internal Server Error'})
+    }
+
+
+})
 
 
 
