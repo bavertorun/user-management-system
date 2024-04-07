@@ -22,7 +22,7 @@ router.post('/create', async (req,res)=>{
     const { error } = validateUser(req.body);
 
     if(error){
-        res.status(400).json({status: 400, error: error.details[0].message});
+        return res.status(400).json({status: 400, error: error.details[0].message});
     }
     
     const newUser = new User({
@@ -36,7 +36,36 @@ router.post('/create', async (req,res)=>{
         await newUser.save()
         res.json(newUser)
     } catch (error) {
-        res.status(500).json({status: 500,error: 'Internal Server Error'})
+        res.status(500).json({status: 500,error: 'Internal server error'})
+    }
+
+
+})
+router.put('/update/:id', async (req,res)=>{
+
+    const user = await User.findById(req.params.id);
+
+    if(!user){
+        return res.status(400).json({status: 400, error: 'User not found'});
+    }
+
+    const { error } = validateUser(req.body);
+
+    if(error){
+        return res.status(400).json({status: 400, error: error.details[0].message});
+    }
+
+    user.name = req.body.name;
+    user.email = req.body.email;
+    user.country = req.body.country;
+    user.contact = req.body.contact;
+
+    try {
+        await user.save();
+        res.json(user);
+        
+    } catch (error) {
+        res.status(500).json({status: 500, error: 'Internal server error'});
     }
 
 
