@@ -7,7 +7,7 @@ router.get('/', async (req,res)=>{
     const users = await User.find();
     res.json(users)
 })
-router.get('/:id',async (req,res)=>{
+router.get('/:id', async (req,res)=>{
     const user = await User.findById(req.params.id)
 
     console.log(user)
@@ -70,7 +70,22 @@ router.put('/update/:id', async (req,res)=>{
 
 
 })
+router.delete('/delete/:id', async (req,res) =>{
+    try {
+        const user = await User.deleteOne({_id: req.params.id});
 
+        if(user.deletedCount == 0){
+            return res.status(400).json({status: 400, error: 'User not found'});
+        } 
+    
+        res.json(user)
+    
+    } catch (error) {
+        res.status(500).json({status: 500,error: 'Internal server error'})
+    }
+
+
+})
 
 
 
