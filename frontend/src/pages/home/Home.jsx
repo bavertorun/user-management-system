@@ -73,7 +73,7 @@ export default function Home(){
                   <td>
                     <div className="d-flex">
                       <button className="btn btn-sm btn-outline-primary">View</button>
-                      <button className="btn btn-sm btn-outline-success mx-2">Edit</button>
+                      <a href={`/update/${user._id}`}><button className="btn btn-sm btn-outline-success mx-2">Edit</button></a>
                       <button onClick={()=>userDelete(user._id)} className="btn btn-sm btn-outline-danger">Delete</button>
                     </div>
                   </td>

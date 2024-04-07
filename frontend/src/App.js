@@ -12,6 +12,7 @@ return (
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/add" element={<AddEdit/>}/>
+        <Route path="/update/:id" element={<AddEdit/>}/>
       </Routes>
     </Router>
   );
