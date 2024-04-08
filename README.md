@@ -13,7 +13,7 @@ cd mser-management-system
 ```
 cd backend
 ```
-open db.js
+open db.js<br>
 add your mongodb connection uri
 ```
 npm start
