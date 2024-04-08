@@ -1,5 +1,7 @@
 # React &amp; NodeJS User Management System
 
+<img src='./demo.gif'>
+
 ## Installation
 
 ```
